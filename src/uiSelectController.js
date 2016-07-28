@@ -144,6 +144,11 @@ uis.controller('uiSelectCtrl',
 
         if (ctrl.items.length > 0) {
           ctrl.$animate.on('enter', container[0], animateHandler);
+          $timeout(function () {
+            if(!ctrl.tagging.isActivated && ctrl.items.length > 1) {
+              _ensureHighlightVisible();
+            }
+          });
         } else {
           ctrl.$animate.on('removeClass', searchInput[0], animateHandler);
         }
